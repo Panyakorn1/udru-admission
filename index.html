@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>สมัครเรียน - มหาวิทยาลัยราชภัฏอุดรธานี</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>ระบบสมัครเรียนออนไลน์</h1>
+    <h2>มหาวิทยาลัยราชภัฏอุดรธานี</h2>
+  </header>
+
+  <form id="applicationForm">
+    <label for="fullName">ชื่อ-นามสกุล:</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <label for="idCard">เลขบัตรประชาชน:</label>
+    <input type="text" id="idCard" name="idCard" required maxlength="13">
+
+    <label for="email">อีเมล:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="faculty">คณะที่ต้องการสมัคร:</label>
+    <select id="faculty" name="faculty" required>
+      <option value="">-- กรุณาเลือก --</option>
+      <option value="ครุศาสตร์">ครุศาสตร์</option>
+      <option value="วิทยาการจัดการ">วิทยาการจัดการ</option>
+      <option value="มนุษยศาสตร์และสังคมศาสตร์">มนุษยศาสตร์และสังคมศาสตร์</option>
+      <option value="วิทยาศาสตร์">วิทยาศาสตร์</option>
+    </select>
+
+    <button type="submit">ส่งใบสมัคร</button>
+  </form>
+
+  <div id="confirmation" style="display:none;">
+    <h3>✅ ส่งใบสมัครเรียบร้อยแล้ว!</h3>
+    <p>ขอบคุณที่สมัครเรียนกับมหาวิทยาลัยราชภัฏอุดรธานี</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
