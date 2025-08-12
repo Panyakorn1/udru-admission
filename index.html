@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>สมัครเรียน มรภ.อุดรธานี</title>
+  <title>สมัครเรียน มรภ.อุดรธานี (สามพร้าว)</title>
   <style>
     body {
       font-family: 'Sarabun', sans-serif;
@@ -52,7 +52,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>สมัครเรียน มหาวิทยาลัยราชภัฏอุดรธานี</h1>
+    <h1>สมัครเรียน มหาวิทยาลัยราชภัฏอุดรธานี (สามพร้าว)</h1>
     <form id="admissionForm">
       <label for="fullname">ชื่อ-นามสกุล</label>
       <input type="text" id="fullname" name="fullname" required>
@@ -66,9 +66,10 @@
       <label for="faculty">คณะที่ต้องการสมัคร</label>
       <select id="faculty" name="faculty" required onchange="updateMajors()">
         <option value="">-- กรุณาเลือกคณะ --</option>
-        <option value="ครุศาสตร์">ครุศาสตร์</option>
-        <option value="วิทยาศาสตร์">วิทยาศาสตร์</option>
-        <option value="บริหารธุรกิจ">บริหารธุรกิจ</option>
+        <option value="วิทยาศาสตร์">คณะวิทยาศาสตร์</option>
+        <option value="เทคโนโลยีและวิศวกรรมศาสตร์">คณะเทคโนโลยีและวิศวกรรมศาสตร์</option>
+        <option value="พยาบาลศาสตร์">คณะพยาบาลศาสตร์</option>
+        <option value="มนุษยศาสตร์และสังคมศาสตร์">คณะมนุษยศาสตร์และสังคมศาสตร์</option>
       </select>
 
       <label for="major">สาขาวิชา</label>
@@ -82,3 +83,55 @@
 
   <script>
     const majorsByFaculty = {
+      "วิทยาศาสตร์": [
+        "ชีววิทยา",
+        "เคมี",
+        "ฟิสิกส์",
+        "วิทยาการคอมพิวเตอร์",
+        "คณิตศาสตร์",
+        "เทคโนโลยีชีวภาพ"
+      ],
+      "เทคโนโลยีและวิศวกรรมศาสตร์": [
+        "วิศวกรรมโยธา",
+        "วิศวกรรมไฟฟ้า",
+        "เทคโนโลยีอุตสาหกรรม",
+        "เทคโนโลยีสารสนเทศ",
+        "เทคโนโลยีการผลิตพืช",
+        "เทคโนโลยีการเกษตร"
+      ],
+      "พยาบาลศาสตร์": [
+        "พยาบาลศาสตร์"
+      ],
+      "มนุษยศาสตร์และสังคมศาสตร์": [
+        "ภาษาไทย",
+        "ภาษาอังกฤษ",
+        "สังคมศึกษา",
+        "การพัฒนาชุมชน",
+        "รัฐประศาสนศาสตร์"
+      ]
+    };
+
+    function updateMajors() {
+      const facultySelect = document.getElementById("faculty");
+      const majorSelect = document.getElementById("major");
+      const selectedFaculty = facultySelect.value;
+
+      majorSelect.innerHTML = '<option value="">-- กรุณาเลือกสาขา --</option>';
+
+      if (majorsByFaculty[selectedFaculty]) {
+        majorsByFaculty[selectedFaculty].forEach(major => {
+          const option = document.createElement("option");
+          option.value = major;
+          option.textContent = major;
+          majorSelect.appendChild(option);
+        });
+      }
+    }
+
+    document.getElementById("admissionForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("✅ ส่งใบสมัครเรียบร้อยแล้ว!");
+    });
+  </script>
+</body>
+</html>
